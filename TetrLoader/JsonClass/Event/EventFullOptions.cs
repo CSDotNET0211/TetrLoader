@@ -1,4 +1,6 @@
 ﻿
+using TetrLoader.Enum;
+
 namespace TetrLoader.JsonClass.Event
 {
 	public class EventFullOptions : Event
@@ -24,7 +26,7 @@ namespace TetrLoader.JsonClass.Event
 		public bool? no_szo { get; set; } = null;
 		public int? garbagespeed { get; set; } = null;
 		public int? garbagecap { get; set; } = null;
-		public string? kickset { get; set; } = null;
+		public KicksetType? kickset { get; set; } = null;
 		public int? boardwidth { get; set; } = null;
 		public int? boardheight { get; set; } = null;
 		public int? boardbuffer { get; set; } = null;
@@ -53,9 +55,9 @@ namespace TetrLoader.JsonClass.Event
 		public int? lockresets { get; set; } = null;
 		public bool? b2bchaining { get; set; } = null;
 		public bool? clutch { get; set; } = null;
-		public object? passthrough { get; set; } = null;
+		public PassthroughType? passthrough { get; set; } = null;
 		public bool? nolockout { get; set; } = null;
-		public string? garbageblocking { get; set; } = null;
+		public GarbageBlockingType? garbageblocking { get; set; } = null;
 		public double? garbagemultiplier { get; set; } = null;
 	}
 }
