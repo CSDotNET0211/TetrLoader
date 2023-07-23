@@ -1,5 +1,4 @@
-﻿
-using TetrLoader.Enum;
+﻿using TetrLoader.Enum;
 
 namespace TetrLoader.JsonClass.Event
 {
@@ -44,8 +43,8 @@ namespace TetrLoader.JsonClass.Event
 		public double? garbagecapincrease { get; set; } = null;
 		public int? garbagecapmax { get; set; } = null;
 		public double? garbageincrease { get; set; } = null;
-		public string? bagtype { get; set; } = null;
-		public string? spinbonuses { get; set; } = null;
+		public BagType? bagtype { get; set; } = null;
+		public SpinBonusesType? spinbonuses { get; set; } = null;
 		public bool? allow_harddrop { get; set; } = null;
 		public bool? display_shadow { get; set; } = null;
 		public int? locktime { get; set; } = null;
