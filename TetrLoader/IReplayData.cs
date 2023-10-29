@@ -1,4 +1,5 @@
 ﻿using TetrLoader.JsonClass.Event;
+using TetrLoader.Struct;
 
 namespace TetrLoader
 {

@@ -21,7 +21,7 @@ public class EventTypeConverter : JsonConverter<EventType>
 			case "keydown":
 				return EventType.Keydown;
 			case "keyup":
-				return EventType.Keydown;
+				return EventType.Keyup;
 			case "targets":
 				return EventType.Targets;
 			case "ige":

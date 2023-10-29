@@ -3,7 +3,7 @@ using TetrLoader.Converter;
 
 namespace TetrLoader.Enum;
 
-[JsonConverter(typeof(BagTypeConverter))]
+[JsonConverter(typeof(SpinBonusesTypeConverter))]
 public enum SpinBonusesType
 {
 	None,

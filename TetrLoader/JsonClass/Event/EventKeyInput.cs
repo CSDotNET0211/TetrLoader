@@ -21,7 +21,7 @@ namespace TetrLoader.JsonClass.Event
 
 	public class EventKeyInputData
 	{
-		public string key { get; set; }
+		public KeyType key { get; set; }
 		public double subframe { get; set; }
 		public bool hoisted { get; set; }
 	}

@@ -4,7 +4,7 @@ using TetrLoader.Converter;
 namespace TetrLoader.Enum;
 
 [JsonConverter(typeof(PassthroughTypeConverter))]
-public enum PassthroughType
+public enum PassthroughType:byte
 {
 	Full,
 	Limited,

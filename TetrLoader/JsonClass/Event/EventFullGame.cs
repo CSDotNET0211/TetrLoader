@@ -11,7 +11,12 @@
 	}
 	public  class EventFullGameData
 	{
-		public TetrLoader.JsonClass.Handling? handling { get; set; } = null;
+		public List<List<object>>? board { get; set; }
+		public List<string>? bag { get; set; }
+		public double? g { get; set; }
+		public bool? playing { get; set; }
+		public Hold hold { get; set; }
+		public Handling? handling { get; set; } = null;
 
 
 

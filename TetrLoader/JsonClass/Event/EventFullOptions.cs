@@ -4,12 +4,12 @@ namespace TetrLoader.JsonClass.Event
 {
 	public class EventFullOptions : Event
 	{
-		public EventFullOptions(EventFullGameData data) : base(null, null, null)
+		public EventFullOptions(EventFullOptionsData data) : base(null, null, null)
 		{
 			this.data = data;
 		}
 
-		public new EventFullGameData data { get; set; }
+		public new EventFullOptionsData data { get; set; }
 	}
 
 	public class EventFullOptionsData

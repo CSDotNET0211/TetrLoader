@@ -10,22 +10,34 @@ public class PassthroughTypeConverter : JsonConverter<PassthroughType>
 	public override PassthroughType Read(ref Utf8JsonReader reader, Type typeToConvert,
 		JsonSerializerOptions options)
 	{
-		switch (reader.GetString())
+		try
 		{
-			case "zero":
-				return PassthroughType.Zero;
-			case "consistent":
-				return PassthroughType.Consistent;
-			case "limited":
-				return PassthroughType.Limited;
-			case "full":
+			var value = reader.GetBoolean();
+			if (value)
 				return PassthroughType.Full;
-			case "true":
-				return PassthroughType.Full;
-			case "false":
-				return PassthroughType.Limited;
-			default:
-				throw new JsonException("Unknown passthrough type.");
+			else return PassthroughType.Limited;
+		}
+		catch
+		{
+			switch (reader.GetString())
+			{
+				case "zero":
+					return PassthroughType.Zero;
+				case "consistent":
+					return PassthroughType.Consistent;
+				case "limited":
+					return PassthroughType.Limited;
+				case "full":
+					return PassthroughType.Full;
+				case "true":
+				case "True":
+					return PassthroughType.Full;
+				case "false":
+				case "False":
+					return PassthroughType.Limited;
+				default:
+					throw new JsonException("Unknown passthrough type.");
+			}
 		}
 	}
 

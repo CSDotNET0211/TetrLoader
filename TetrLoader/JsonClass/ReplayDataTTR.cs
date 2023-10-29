@@ -3,6 +3,7 @@ using TetrLoader.Enum;
 using TetrLoader.JsonClass.Event;
 using TetrLoader;
 using TetrLoader.JsonClass;
+using TetrLoader.Struct;
 
 namespace TetrLoader.JsonClass;
 

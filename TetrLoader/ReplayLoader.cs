@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using TetrLoader.Enum;
 using TetrLoader.JsonClass;
 using TetrLoader.JsonClass.Event;
 
@@ -15,10 +16,10 @@ namespace TetrLoader
 		{
 			IsMulti? replay = JsonSerializer.Deserialize<IsMulti>(jsonString);
 
-			if (replay?.ismulti == null || replay.ismulti == false)
+			if (replay?.ismulti is null or false)
 				return false;
-			else
-				return true;
+			
+			return true;
 		}
 
 
@@ -27,11 +28,11 @@ namespace TetrLoader
 		/// </summary>
 		/// <param name="jsonString"></param>
 		/// <param name="replayKind"></param>
-		/// <returns>Parsed replay object. Cast ReplayDataTTR or ReplayDataTTRM to use</returns>
+		/// <returns>Parsed replay object. ReplayDataTTR or ReplayDataTTRM</returns>
 		/// <exception cref="Exception"></exception>
-		public static IReplayData ParseReplay(string jsonString, ReplayKind replayKind)
+		public static IReplayData? ParseReplay(string jsonString, ReplayKind replayKind)
 		{
-			IReplayData replay;
+			IReplayData? replay;
 			if (replayKind == ReplayKind.TTR)
 				replay = JsonSerializer.Deserialize<ReplayDataTTR>(jsonString);
 			else
@@ -89,8 +90,8 @@ namespace TetrLoader
 	{
 		public bool? successful { get; set; } = null;
 		public string? gameoverreason { get; set; } = null;
-		public EventFullReplayData? replay { get; set; } = null;
-		public EventFullSourceData? source { get; set; } = null;
+		//public EventFullReplayData? replay { get; set; } = null;
+	//	public EventFullSourceData? source { get; set; } = null;
 		public EventFullOptionsData? options { get; set; } = null;
 
 		public EventFullStatsData? stats { get; set; } = null;
