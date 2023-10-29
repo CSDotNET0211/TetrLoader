@@ -14,5 +14,6 @@ public enum KeyType
 	Rotate180,
 	HardDrop,
 	Hold,
-	Chat
+	Chat,
+	Null
 }

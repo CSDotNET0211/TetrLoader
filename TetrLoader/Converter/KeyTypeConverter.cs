@@ -32,6 +32,9 @@ public class KeyTypeConverter : JsonConverter<KeyType>
 			case "chat":
 				return KeyType.Chat;
 			default:
+				if (reader.GetString().StartsWith("target"))
+					return KeyType.Null;
+				
 				throw new JsonException("Unknown key type.");
 		}
 	}
