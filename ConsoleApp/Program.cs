@@ -4,7 +4,7 @@ using TetrLoader;
 using TetrLoader.Enum;
 
 string jsonData = string.Empty;
-using (StreamReader reader = new StreamReader(@"C:\Users\CSDotNET\Downloads\ohno.ttrm", Encoding.UTF8))
+using (StreamReader reader = new StreamReader(@"path\sample.ttrm", Encoding.UTF8))
 {
 	jsonData = reader.ReadToEnd();
 }
