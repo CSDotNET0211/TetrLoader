@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Transactions;
-using TetrLoader;
-using TetrLoader.Enum;
+﻿using TetrLoader.Enum;
 
 namespace TetrLoader.JsonClass.Event
-{
+{ 
 	public class EventIge : Event, ICloneable
 	{
 		public EventIge(int? id, int frame, EventType? type, EventIgeData data) : base(id, frame, type)
@@ -26,7 +18,7 @@ namespace TetrLoader.JsonClass.Event
 			return data;
 		}
 	}
-
+	 
 	public class EventIgeData : ICloneable
 	{
 		public int? id { get; set; }

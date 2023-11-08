@@ -1,8 +1,6 @@
 ﻿using System.Text.Json;
 using TetrLoader.Enum;
 using TetrLoader.JsonClass.Event;
-using TetrLoader;
-using TetrLoader.JsonClass;
 using TetrLoader.Struct;
 
 namespace TetrLoader.JsonClass;
@@ -10,6 +8,7 @@ namespace TetrLoader.JsonClass;
 /// <summary>
 /// リプレイファイルのデータ
 /// </summary>
+ 
 public class ReplayDataTTR : IReplayData
 {
 	public User? user { get; set; } = null;

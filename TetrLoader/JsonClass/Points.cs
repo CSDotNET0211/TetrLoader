@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TetrLoader.JsonClass
-{
+﻿namespace TetrLoader.JsonClass
+{ 
     public class Points
     {
         public int? primary { get; set; } = null;

@@ -1,14 +1,19 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using System.Text;
+﻿using System.Text;
 using TetrLoader;
 using TetrLoader.Enum;
+using TetrLoader.JsonClass;
 
 string jsonData = string.Empty;
-using (StreamReader reader = new StreamReader(@"path\sample.ttrm", Encoding.UTF8))
+using (StreamReader reader = new StreamReader(@"C:\Users\CSDotNET\Downloads\ew\minest3.17replay.ttrm", Encoding.UTF8))
 {
 	jsonData = reader.ReadToEnd();
 }
 
 var IReplayData = ReplayLoader.ParseReplay(jsonData, ReplayKind.TTRM);
+//保存先のファイル名
+string fileName = "C:\\Users\\CSDotNET\\Downloads\\ew\\data.ttrmx";
+
+
+
 
 Console.WriteLine("a");

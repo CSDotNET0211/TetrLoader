@@ -1,7 +1,7 @@
 ﻿using TetrLoader.Enum;
 
 namespace TetrLoader.JsonClass.Event
-{
+{ 
 	public class EventFullOptions : Event
 	{
 		public EventFullOptions(EventFullOptionsData data) : base(null, null, null)
@@ -11,7 +11,7 @@ namespace TetrLoader.JsonClass.Event
 
 		public new EventFullOptionsData data { get; set; }
 	}
-
+	 
 	public class EventFullOptionsData
 	{
 		public int version { get; set; }

@@ -1,5 +1,5 @@
 ﻿namespace TetrLoader.JsonClass;
-
+ 
 public class Hold
 {
 	public string piece { get; set; }

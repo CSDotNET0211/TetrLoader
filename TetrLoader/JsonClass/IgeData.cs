@@ -1,7 +1,5 @@
-﻿using TetrLoader.JsonClass;
-
-namespace TetrLoader.JsonClass;
-
+﻿namespace TetrLoader.JsonClass;
+ 
 public class IgeData:ICloneable
 {
 

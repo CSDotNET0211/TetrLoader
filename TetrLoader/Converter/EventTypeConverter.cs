@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 using TetrLoader.Enum;
 
@@ -26,6 +25,8 @@ public class EventTypeConverter : JsonConverter<EventType>
 				return EventType.Targets;
 			case "ige":
 				return EventType.Ige;
+			case "exit":
+				return EventType.Exit;
 			default:
 				throw new JsonException("Unknown event type.");
 		}
@@ -55,6 +56,9 @@ public class EventTypeConverter : JsonConverter<EventType>
 				return;
 			case EventType.Targets:
 				writer.WriteStringValue("targets");
+				return;
+			case EventType.Exit:
+				writer.WriteStringValue("exit");
 				return;
 			default:
 				throw new JsonException("Unknown event type.");

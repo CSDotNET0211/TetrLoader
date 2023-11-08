@@ -50,6 +50,7 @@ namespace TetrLoader
 	/// <summary>
 	/// 試合中のデータ、プレイヤーの数分だけリストの個数がある
 	/// </summary>
+	 
 	public class PlayDataTTRM
 	{
 		/// <summary>
@@ -63,7 +64,7 @@ namespace TetrLoader
 		public List<ReplayEvent> replays { get; set; } 
 	}
 
-
+	 
 	public class Board
 	{
 		public User? user { get; set; } = null;
@@ -75,6 +76,7 @@ namespace TetrLoader
 	/// <summary>
 	/// 試合の入力データ
 	/// </summary>
+	 
 	public class ReplayEvent
 	{
 		/// <summary>
@@ -86,6 +88,7 @@ namespace TetrLoader
 	}
 
 
+	 
 	public class Export
 	{
 		public bool? successful { get; set; } = null;
@@ -103,6 +106,7 @@ namespace TetrLoader
 		public AggregateStats? aggregatestats { get; set; } = null;
 	}
 
+	 
 	public class AggregateStats
 	{
 		public double? apm { get; set; } = null;

@@ -1,9 +1,7 @@
-﻿using System.Text.Json.Serialization;
-using TetrLoader.Converter;
-using TetrLoader.Enum;
+﻿using TetrLoader.Enum;
 
 namespace TetrLoader.JsonClass.Event
-{
+{ 
 	public class Event : ICloneable
 	{
 		public Event(int? id, int? frame, EventType? type)
@@ -11,7 +9,7 @@ namespace TetrLoader.JsonClass.Event
 			this.id = id;
 			this.frame = frame;
 			this.type = type;
-			this.data = null;
+			data = null;
 		}
 
 		public object Clone()

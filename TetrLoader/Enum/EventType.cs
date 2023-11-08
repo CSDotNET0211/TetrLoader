@@ -12,5 +12,6 @@ public enum EventType
 	Keydown,
 	Keyup,
 	Targets,
-	Ige
+	Ige,
+	Exit
 }

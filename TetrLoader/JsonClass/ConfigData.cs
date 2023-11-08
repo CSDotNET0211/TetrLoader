@@ -1,15 +1,16 @@
 ﻿namespace TetrLoader.JsonClass
 {
+	 
 	public class ConfigData
 	{
 
 	}
-
+	 
 	// Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
 	public class Bgmtweak
 	{
 	}
-
+	 
 	public class Controls
 	{
 		public string? style { get; set; }
@@ -17,7 +18,7 @@
 		public double? sensitivity { get; set; }
 		public string? vibration { get; set; }
 	}
-
+	 
 	public class Custom
 	{
 		public List<string>? moveLeft { get; set; }
@@ -43,7 +44,7 @@
 		public List<string>? menuConfirm { get; set; }
 		public List<object>? openSocial { get; set; }
 	}
-
+	 
 	public class Electron
 	{
 		public string? loginskip { get; set; }
@@ -53,7 +54,7 @@
 		public bool? anglecompat { get; set; }
 		public bool? adblock { get; set; }
 	}
-
+	 
 	public class Gameoptions
 	{
 		public bool? pro_40l { get; set; }
@@ -67,7 +68,7 @@
 	}
 
 	
-
+	 
 	public class Notifications
 	{
 		public bool? suppress { get; set; }
@@ -79,7 +80,7 @@
 		public string? invite { get; set; }
 		public string? other { get; set; }
 	}
-
+	 
 	public class Root
 	{
 		public Controls? controls { get; set; }
@@ -90,7 +91,7 @@
 		public Electron? electron { get; set; }
 		public Notifications? notifications { get; set; }
 	}
-
+	 
 	public class Video
 	{
 		public string? graphics { get; set; }
@@ -135,7 +136,7 @@
 		public double? chroma { get; set; }
 		public int? flashwave { get; set; }
 	}
-
+	 
 	public class Volume
 	{
 		public bool? disable { get; set; }

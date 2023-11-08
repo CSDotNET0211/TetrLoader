@@ -1,8 +1,6 @@
 ﻿using System.Text.Json;
 using TetrLoader.Enum;
 using TetrLoader.JsonClass.Event;
-using TetrLoader;
-using TetrLoader.JsonClass;
 using TetrLoader.Struct;
 
 namespace TetrLoader.JsonClass;
@@ -10,6 +8,7 @@ namespace TetrLoader.JsonClass;
 /// <summary>
 /// リプレイファイルのデータ
 /// </summary>
+ 
 public class ReplayDataTTRM : IReplayData
 {
 	public string? _id { get; set; } = null;
@@ -20,6 +19,11 @@ public class ReplayDataTTRM : IReplayData
 	public string? ts { get; set; } = null;
 	public string? gametype { get; set; } = null;
 	public bool? verified { get; set; } = null;
+	
+	public string replayid { get; set; }
+	public string stream { get; set; }
+	public User? user { get; set; }
+	
 	/// <summary>
 	/// 試合ごとのデータ群
 	/// </summary>

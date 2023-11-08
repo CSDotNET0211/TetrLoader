@@ -1,5 +1,5 @@
 ﻿namespace TetrLoader.JsonClass.Event
-{
+{ 
 	public class EventFullStats : Event
 	{
 		public EventFullStats(EventFullStatsData data) : base(null, null, null)
@@ -10,7 +10,7 @@
 		public new EventFullStatsData data { get; set; }
 
 	}
-
+	 
 	public class EventFullStatsData
 	{
 		public double? seed { get; set; }
