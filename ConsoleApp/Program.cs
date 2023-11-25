@@ -3,17 +3,23 @@ using TetrLoader;
 using TetrLoader.Enum;
 using TetrLoader.JsonClass;
 
-string jsonData = string.Empty;
-using (StreamReader reader = new StreamReader(@"C:\Users\CSDotNET\Downloads\ew\minest3.17replay.ttrm", Encoding.UTF8))
+START: ;
+string jsonString = string.Empty;
+//string fileName = Console.ReadLine();
+string fileName = @"C:\Users\CSDotNET\Downloads\v16__2HfCA1pM.ttrm";
+fileName = fileName.Replace("\"", "");
+using (StreamReader reader = new StreamReader(fileName, Encoding.UTF8))
 {
-	jsonData = reader.ReadToEnd();
+	jsonString = reader.ReadToEnd();
 }
 
-var IReplayData = ReplayLoader.ParseReplay(jsonData, ReplayKind.TTRM);
+Console.WriteLine(Util.IsMulti(ref jsonString));
+
+var IReplayData = ReplayLoader.ParseReplay(jsonString, ReplayKind.TTRM);
 //保存先のファイル名
-string fileName = "C:\\Users\\CSDotNET\\Downloads\\ew\\data.ttrmx";
 
-
+var events = IReplayData.GetReplayEvents(0, 0);
 
 
 Console.WriteLine("a");
+goto START;

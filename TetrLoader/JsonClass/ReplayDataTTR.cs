@@ -36,6 +36,11 @@ public class ReplayDataTTR : IReplayData
 	public int GetReplayCount()
 		=> 1;
 
+	public int GetEndEventFrame(int playerIndex, int replayIndex)
+	{
+		return 0;
+	}
+
 	public List<Event.Event>? GetReplayEvents(int playerIndex, int replayIndex)
 	{
 
@@ -122,7 +127,7 @@ public class ReplayDataTTR : IReplayData
 			Winner = false
 		};
 
-	public string GetUsername(int playerIndex)
+	public string GetUsername(int playerIndex,int version)
 		=> user.username;
 
 }

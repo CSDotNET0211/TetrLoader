@@ -12,6 +12,7 @@ public class BagTypeConverter : JsonConverter<BagType>
 		switch (reader.GetString())
 		{
 			case "7-bag":
+			case "7bag":
 				return BagType.Bag7;
 			case "14-bag":
 				return BagType.Bag14;
@@ -22,7 +23,7 @@ public class BagTypeConverter : JsonConverter<BagType>
 			case "total mayhem":
 				return BagType.TotalMayhem;
 			default:
-				throw new JsonException("Unknown bag type.");
+				throw new JsonException("Unknown bag type:" + reader.GetString());
 		}
 	}
 

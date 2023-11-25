@@ -1,16 +1,16 @@
-﻿namespace TetrLoader.JsonClass;
- 
-public class IgeData:ICloneable
+﻿using TetrLoader.Ige;
+
+namespace TetrLoader.JsonClass;
+
+public class IgeData : ICloneable
 {
-
-
 	public IgeData Clone()
 	{
 		IgeData newdata = new IgeData();
 		newdata.id = id;
 		newdata.frame = frame;
 		newdata.type = type;
-		newdata.data = data.Clone();
+		newdata.data = (GarbageData)data.Clone();
 		newdata.sender = sender;
 		newdata.sender_id = sender_id;
 		newdata.sent_frame = sent_frame;
@@ -20,11 +20,7 @@ public class IgeData:ICloneable
 		newdata.active = active;
 
 
-
-
 		return newdata;
-
-
 	}
 
 	object ICloneable.Clone()
@@ -43,5 +39,4 @@ public class IgeData:ICloneable
 	public int lines { get; set; }
 	public int column { get; set; }
 	public bool active { get; set; }
-
 }

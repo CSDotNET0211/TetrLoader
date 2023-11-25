@@ -7,20 +7,7 @@ namespace TetrLoader
 {
 	public abstract class ReplayLoader
 	{
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <param name="jsonString">raw json replay string</param>
-		/// <returns></returns>
-		public static bool IsMulti(string jsonString)
-		{
-			IsMulti? replay = JsonSerializer.Deserialize<IsMulti>(jsonString);
-
-			if (replay?.ismulti is null or false)
-				return false;
-			
-			return true;
-		}
+		
 
 
 		/// <summary>
@@ -50,33 +37,35 @@ namespace TetrLoader
 	/// <summary>
 	/// 試合中のデータ、プレイヤーの数分だけリストの個数がある
 	/// </summary>
-	 
 	public class PlayDataTTRM
 	{
 		/// <summary>
 		/// プレイヤーの情報に関するデータ
 		/// </summary>
-		public List<Board> board { get; set; } 
+		public List<Board> board { get; set; }
 
 		/// <summary>
 		/// リプレイの操作に関するデータ
 		/// </summary>
-		public List<ReplayEvent> replays { get; set; } 
+		public List<ReplayEvent> replays { get; set; }
 	}
 
-	 
+
 	public class Board
 	{
 		public User? user { get; set; } = null;
 		public bool? active { get; set; } = null;
 		public bool? success { get; set; } = null;
 		public int? winning { get; set; } = null;
+
+		//from v16, User structure was combined to endcontext
+		public string? id { get; set; } = null;
+		public string? username { get; set; } = null;
 	}
 
 	/// <summary>
 	/// 試合の入力データ
 	/// </summary>
-	 
 	public class ReplayEvent
 	{
 		/// <summary>
@@ -88,13 +77,14 @@ namespace TetrLoader
 	}
 
 
-	 
 	public class Export
 	{
 		public bool? successful { get; set; } = null;
+
 		public string? gameoverreason { get; set; } = null;
+
 		//public EventFullReplayData? replay { get; set; } = null;
-	//	public EventFullSourceData? source { get; set; } = null;
+		//	public EventFullSourceData? source { get; set; } = null;
 		public EventFullOptionsData? options { get; set; } = null;
 
 		public EventFullStatsData? stats { get; set; } = null;
@@ -106,7 +96,7 @@ namespace TetrLoader
 		public AggregateStats? aggregatestats { get; set; } = null;
 	}
 
-	 
+
 	public class AggregateStats
 	{
 		public double? apm { get; set; } = null;

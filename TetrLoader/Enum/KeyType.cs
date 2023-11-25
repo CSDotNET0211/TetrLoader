@@ -15,5 +15,6 @@ public enum KeyType
 	HardDrop,
 	Hold,
 	Chat,
+	Exit,
 	Null
 }

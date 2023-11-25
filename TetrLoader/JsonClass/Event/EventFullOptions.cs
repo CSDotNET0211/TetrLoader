@@ -1,7 +1,7 @@
 ﻿using TetrLoader.Enum;
 
 namespace TetrLoader.JsonClass.Event
-{ 
+{
 	public class EventFullOptions : Event
 	{
 		public EventFullOptions(EventFullOptionsData data) : base(null, null, null)
@@ -11,7 +11,7 @@ namespace TetrLoader.JsonClass.Event
 
 		public new EventFullOptionsData data { get; set; }
 	}
-	 
+
 	public class EventFullOptionsData
 	{
 		public int version { get; set; }
@@ -49,14 +49,25 @@ namespace TetrLoader.JsonClass.Event
 		public bool? display_shadow { get; set; } = null;
 		public int? locktime { get; set; } = null;
 		public int? are { get; set; } = null;
-		public int? lieclear_are { get; set; } = null;
+		public int? lineclear_are { get; set; } = null;
 		public bool? infinitemovement { get; set; } = null;
+		public bool? infinitehold { get; set; } = null;
 		public int? lockresets { get; set; } = null;
-		public bool? b2bchaining { get; set; } = null;
+		public bool? btbchaining { get; set; } = null;
 		public bool? clutch { get; set; } = null;
 		public PassthroughType? passthrough { get; set; } = null;
 		public bool? nolockout { get; set; } = null;
 		public GarbageBlockingType? garbageblocking { get; set; } = null;
 		public double? garbagemultiplier { get; set; } = null;
+		public ComboTableType? combotable { get; internal set; } = null;
+		public GarbageTargetBonusType? garbagetargetbonus { get; internal set; } = null;
+		public bool? garbageattackcap { get; internal set; } = null;
+		public bool? garbagephase { get; internal set; } = null;
+		public bool? garbagequeue { get; internal set; } = null;
+		public int? garbageholesize { get; internal set; } = null;
+		public bool? allclears { get; internal set; } = null;
+		public string? garbageentry { get; internal set; } = null;
+		public int? garbageare { get; internal set; } = null;
+		public bool? shielded { get; internal set; } = null;
 	}
 }

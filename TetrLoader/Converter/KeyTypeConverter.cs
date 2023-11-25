@@ -29,11 +29,13 @@ public class KeyTypeConverter : JsonConverter<KeyType>
 				return KeyType.Rotate180;
 			case "chat":
 				return KeyType.Chat;
+			case "exit":
+				return KeyType.Exit;
 			default:
 				if (reader.GetString().StartsWith("target"))
 					return KeyType.Null;
 				
-				throw new JsonException("Unknown key type.");
+				throw new JsonException("Unknown key type:"+reader.GetString());
 		}
 	}
 

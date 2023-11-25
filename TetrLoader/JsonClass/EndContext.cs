@@ -36,5 +36,9 @@
 
 		//BOTH
 		public int? inputs { get; set; } = null;
+		
+		//from v16, User structure was combined to endcontext
+		public string? id { get; set; } = null;
+		public string? username { get; set; } = null;
 	}
 }
