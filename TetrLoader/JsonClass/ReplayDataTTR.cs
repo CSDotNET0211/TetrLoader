@@ -33,7 +33,7 @@ public class ReplayDataTTR : IReplayData
 	public int GetPlayerCount()
 		=> 1;
 
-	public int GetReplayCount()
+	public int GetGamesCount()
 		=> 1;
 
 	public int GetEndEventFrame(int playerIndex, int replayIndex)

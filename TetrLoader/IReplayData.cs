@@ -10,7 +10,7 @@ namespace TetrLoader
 		 Stats GetReplayStats(int playerIndex, int replayIndex);
 		  int GetGameTotalFrames(int replayIndex);
 		 string GetUsername(int playerIndex,int version);
-		 int GetReplayCount();
+		 int GetGamesCount();
 
 		 int GetEndEventFrame(int playerIndex, int replayIndex);
 

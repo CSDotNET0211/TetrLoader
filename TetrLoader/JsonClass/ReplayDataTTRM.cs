@@ -50,7 +50,7 @@ public class ReplayDataTTRM : IReplayData
 		=> data[0].replays.Count;
 
 
-	public int GetReplayCount()
+	public int GetGamesCount()
 		=> data.Count;
 
 	public int GetEndEventFrame(int playerIndex, int replayIndex)
