@@ -1,4 +1,6 @@
-﻿namespace TetrLoader.Ige;
+﻿using TetrLoader.Enum;
+
+namespace TetrLoader.Ige;
 
 public class GarbageData : ICloneable
 {
@@ -8,7 +10,7 @@ public class GarbageData : ICloneable
 	public string? username { get; set; }
 	public string? type { get; set; }
 	public bool? active { get; set; }
-	public string? status { get; set; }
+	public GarbageStatus? status { get; set; }
 	public int? delay { get; set; }
 	public bool? queued { get; set; }
 	public int? amt { get; set; }
@@ -19,7 +21,7 @@ public class GarbageData : ICloneable
 	public int? cid { get; set; }
 	public bool? firstcycle { get; set; }
 	public int? gid { get; set; }
-	
+
 
 	public object Clone()
 	{

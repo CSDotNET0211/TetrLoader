@@ -66,7 +66,7 @@ namespace TetrLoader.JsonClass.Event
 		public bool? garbagequeue { get; internal set; } = null;
 		public int? garbageholesize { get; internal set; } = null;
 		public bool? allclears { get; internal set; } = null;
-		public string? garbageentry { get; internal set; } = null;
+		public GarbageEntryType? garbageentry { get; internal set; } = null;
 		public int? garbageare { get; internal set; } = null;
 		public bool? shielded { get; internal set; } = null;
 	}
