@@ -6,7 +6,6 @@ using TetrLoader.Ige;
 
 namespace TetrLoader.JsonClass.Event
 {
-	//TODO: イベント名整理
 	public class EventIge : Event, ICloneable
 	{
 		public EventIge(int? id, int frame, EventType? type, string igeDataRaw) : base(id, frame, type)

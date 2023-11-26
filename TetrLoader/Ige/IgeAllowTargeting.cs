@@ -11,6 +11,9 @@ public class IgeAllowTargeting : IgeBase
 	//these value is not used
 	public string? gameid;
 	public GarbageData? data;
+	
+	//compativility for v15
+	public string? sender_id;
 
 	public override object Clone()
 		=> new IgeAllowTargeting()

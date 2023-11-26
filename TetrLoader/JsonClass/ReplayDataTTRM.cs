@@ -141,6 +141,79 @@ public class ReplayDataTTRM : IReplayData
 		return events;
 	}
 
+	public void ProcessReplayData(ReplayDataTTRM data, List<TetrLoader.JsonClass.Event.Event>? events)
+	{
+		//	var endContext0 = data.endcontext[0];
+		//	var endContext1 = data.endcontext[1];
+
+		foreach (var endContext in data.endcontext)
+		{
+			if (endContext.username == null)
+			{
+				endContext.username = endContext.user.username;
+				endContext.id = endContext.user._id;
+				endContext.user = null;
+			}
+		}
+
+		foreach (var game in data.data)
+		{
+			if (game.board != null)
+			{
+				foreach (var player in game.board)
+				{
+					if (player.id == null && player.user != null)
+						player.id = player.user._id;
+				}
+			}
+
+			//foreach (var player in events)
+			//	{
+			if (events != null)
+			{
+				for (var index = 0; index < events.Count; index++)
+				{
+					var @event = events[index];
+					if (@event.type == EventType.Ige)
+					{
+						dynamic eventDynamic = @event;
+						var newdata = eventDynamic.data.id == null ? eventDynamic.data : eventDynamic;
+
+						if (newdata?.data?.data?.sender_id == null)
+							continue;
+
+						newdata.data.data.sender_id =
+							(newdata.data.data.sender_id as string)?.Substring(0, 24);
+						newdata.data.data.gameid = newdata.data.data.sender_id;
+					}
+					else if (@event.type == EventType.Targets)
+					{
+						dynamic eventDynamic = @event;
+
+						var targets = eventDynamic.data.data as List<string>;
+						for (int i = 0; i < targets.Count; i++)
+							targets[i] = targets[i].Substring(0, 24);
+
+						var igeData = new EventIgeData();
+						igeData.type = "ige";
+						igeData.id = 1337;
+						igeData.frame = eventDynamic.frame;
+
+						var igeTarget = new IgeTarget();
+						igeData.data = igeTarget;
+						igeTarget.targets = targets.ToArray();
+						igeTarget.type = "target";
+
+						var newEvent = new EventIge(null, eventDynamic.frame, EventType.Ige, igeData);
+
+
+						events[index]= newEvent;
+					}
+				}
+			}
+		}
+	}
+
 	public Stats GetReplayStats(int playerIndex, int replayIndex)
 	{
 		var result = new Stats();
