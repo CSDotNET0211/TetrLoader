@@ -15,6 +15,8 @@ public class IgeKev : IgeBase
 	
 	//not used
 	public string? gameid { get; set; }
+	//compatibility for v15
+	public string? sender_id { get; set; }
 
 	public override object Clone()
 	{

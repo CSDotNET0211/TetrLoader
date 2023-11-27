@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Diagnostics;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using TetrLoader.Enum;
@@ -63,17 +64,21 @@ namespace TetrLoader.JsonClass.Event
 
 				case "kev":
 					igeBase = JsonSerializer.Deserialize<IgeKev>(rawDataString);
-
-					JsonElement igeVictimName;
-					if (igeDataElement.GetProperty("victim").TryGetProperty("name",out igeVictimName))
-						(igeBase as IgeKev).victim =
-							JsonSerializer.Deserialize<Victim>((igeDataElement.GetProperty("victim").GetRawText()));
-					else
-						(igeBase as IgeKev).victim =
-							igeDataElement.GetProperty("victim").GetString();
-
-
 					data.data = igeBase;
+					try
+					{
+						JsonElement igeVictimName;
+						if (igeDataElement.GetProperty("victim").TryGetProperty("name", out igeVictimName))
+							(igeBase as IgeKev).victim =
+								JsonSerializer.Deserialize<Victim>((igeDataElement.GetProperty("victim").GetRawText()));
+						else
+							(igeBase as IgeKev).victim =
+								igeDataElement.GetProperty("victim").GetString();
+					}
+					catch (Exception e)
+					{
+						Debug.WriteLine("probably not working correctly");
+					}
 					break;
 
 				case "attack":

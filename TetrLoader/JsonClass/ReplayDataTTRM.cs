@@ -207,7 +207,15 @@ public class ReplayDataTTRM : IReplayData
 						var newEvent = new EventIge(null, eventDynamic.frame, EventType.Ige, igeData);
 
 
-						events[index]= newEvent;
+						events[index] = newEvent;
+					}
+					else if (@event.type == EventType.Full)
+					{
+						var eventFull = @event as EventFull;
+						if (eventFull.data.options.handling == null)
+						{
+							eventFull.data.options.handling = eventFull.data.game.handling;
+						}
 					}
 				}
 			}
