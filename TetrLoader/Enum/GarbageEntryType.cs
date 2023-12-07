@@ -7,6 +7,6 @@ namespace TetrLoader.Enum;
 public enum GarbageEntryType
 {
 	Instant,
-	PieceAre,
-	Are
+	Delayed,
+	Continuous,
 }

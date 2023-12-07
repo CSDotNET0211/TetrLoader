@@ -13,10 +13,10 @@ public class GarbageEntryTypeConverter : JsonConverter<GarbageEntryType>
 		{
 			case "instant":
 				return GarbageEntryType.Instant;
-			case "piece-are":
-				return GarbageEntryType.PieceAre;
-			case "are":
-				return GarbageEntryType.Are;
+			case "delayed":
+				return GarbageEntryType.Delayed;
+			case "continuous":
+				return GarbageEntryType.Continuous;
 			default:
 				throw new JsonException("Unknown garbageentry type:"+reader.GetString());
 		}
@@ -29,11 +29,11 @@ public class GarbageEntryTypeConverter : JsonConverter<GarbageEntryType>
 			case GarbageEntryType.Instant:
 				writer.WriteStringValue("instant");
 				break;
-			case GarbageEntryType.Are:
-				writer.WriteStringValue("are");
+			case GarbageEntryType.Continuous:
+				writer.WriteStringValue("continuous");
 				break;
-			case GarbageEntryType.PieceAre:
-				writer.WriteStringValue("piece-are");
+			case GarbageEntryType.Delayed:
+				writer.WriteStringValue("delayed");
 				break;
 			default:
 				throw new JsonException("Unknown garbageentry type.");

@@ -36,12 +36,22 @@ public class ReplayDataTTR : IReplayData
 	public int GetGamesCount()
 		=> 1;
 
-	public int GetEndEventFrame(int playerIndex, int replayIndex)
+	public int GetEndEventFrame(string username, int replayIndex)
 	{
 		return 0;
 	}
 
-	public List<Event.Event>? GetReplayEvents(int playerIndex, int replayIndex)
+	public EndContext GetEndContext(int playerIndex)
+	{
+		throw new NotImplementedException();
+	}
+
+	public string[] GetUsernames()
+	{
+		throw new NotImplementedException();
+	}
+
+	public List<Event.Event>? GetReplayEvents(string username, int replayIndex)
 	{
 
 		var rawEvent = data.events;
@@ -118,7 +128,7 @@ public class ReplayDataTTR : IReplayData
 
 	}
 
-	public Stats GetReplayStats(int playerIndex, int replayIndex)
+	public Stats GetReplayStats(string username, int replayIndex)
 		=> new Stats()
 		{
 			PPS = -1,

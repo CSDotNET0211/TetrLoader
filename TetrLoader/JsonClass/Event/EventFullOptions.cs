@@ -15,59 +15,59 @@ namespace TetrLoader.JsonClass.Event
 	public class EventFullOptionsData
 	{
 		public int version { get; set; }
-		public bool? seed_random { get; set; } = null;
+		public bool? seed_random { get; set; }  
 
 		public double seed { get; set; }
-		public bool? allow180 { get; set; } = null;
-		public double? g { get; set; } = null;
-		public Handling? handling { get; set; } = null;
+		public bool? allow180 { get; set; }  
+		public double? g { get; set; }  
+		public Handling? handling { get; set; }  
 
-		public bool? no_szo { get; set; } = null;
-		public int? garbagespeed { get; set; } = null;
-		public int? garbagecap { get; set; } = null;
-		public KicksetType? kickset { get; set; } = null;
-		public int? boardwidth { get; set; } = null;
-		public int? boardheight { get; set; } = null;
-		public int? boardbuffer { get; set; } = null;
-		public bool? physical { get; set; } = null;
-		public bool? display_username { get; set; } = null;
-		public string? username { get; set; } = null;
-		public int? nextcount { get; set; } = null;
-		public int? stock { get; set; } = null;
-		public bool? hasgarbage { get; set; } = null;
-		public bool? display_next { get; set; } = null;
-		public bool? display_hold { get; set; } = null;
-		public int? gmargin { get; set; } = null;
-		public int? garbagemargin { get; set; } = null;
-		public double? gincrease { get; set; } = null;
-		public double? garbagecapincrease { get; set; } = null;
-		public int? garbagecapmax { get; set; } = null;
-		public double? garbageincrease { get; set; } = null;
-		public BagType? bagtype { get; set; } = null;
-		public SpinBonusesType? spinbonuses { get; set; } = null;
-		public bool? allow_harddrop { get; set; } = null;
-		public bool? display_shadow { get; set; } = null;
-		public int? locktime { get; set; } = null;
-		public int? are { get; set; } = null;
-		public int? lineclear_are { get; set; } = null;
-		public bool? infinitemovement { get; set; } = null;
-		public bool? infinitehold { get; set; } = null;
-		public int? lockresets { get; set; } = null;
-		public bool? btbchaining { get; set; } = null;
-		public bool? clutch { get; set; } = null;
-		public PassthroughType? passthrough { get; set; } = null;
-		public bool? nolockout { get; set; } = null;
-		public GarbageBlockingType? garbageblocking { get; set; } = null;
-		public double? garbagemultiplier { get; set; } = null;
-		public ComboTableType? combotable { get; internal set; } = null;
-		public GarbageTargetBonusType? garbagetargetbonus { get; internal set; } = null;
-		public bool? garbageattackcap { get; internal set; } = null;
-		public bool? garbagephase { get; internal set; } = null;
-		public bool? garbagequeue { get; internal set; } = null;
-		public int? garbageholesize { get; internal set; } = null;
-		public bool? allclears { get; internal set; } = null;
-		public GarbageEntryType? garbageentry { get; internal set; } = null;
-		public int? garbageare { get; internal set; } = null;
-		public bool? shielded { get; internal set; } = null;
+		public bool? no_szo { get; set; }  
+		public int? garbagespeed { get; set; }  
+		public int? garbagecap { get; set; }  
+		public KicksetType? kickset { get; set; }  
+		public int? boardwidth { get; set; }  
+		public int? boardheight { get; set; }  
+		public int? boardbuffer { get; set; }  
+		public bool? physical { get; set; }  
+		public bool? display_username { get; set; }  
+		public string? username { get; set; }  
+		public int? nextcount { get; set; }  
+		public int? stock { get; set; }  
+		public bool? hasgarbage { get; set; }  
+		public bool? display_next { get; set; }  
+		public bool? display_hold { get; set; }  
+		public int? gmargin { get; set; }  
+		public int? garbagemargin { get; set; }  
+		public double? gincrease { get; set; }  
+		public double? garbagecapincrease { get; set; }  
+		public int? garbagecapmax { get; set; }  
+		public double? garbageincrease { get; set; }  
+		public BagType? bagtype { get; set; }  
+		public SpinBonusesType? spinbonuses { get; set; }  
+		public bool? allow_harddrop { get; set; }  
+		public bool? display_shadow { get; set; }  
+		public int? locktime { get; set; }  
+		public int? are { get; set; }  
+		public int? lineclear_are { get; set; }  
+		public bool? infinitemovement { get; set; }  
+		public bool? infinitehold { get; set; }  
+		public int? lockresets { get; set; }  
+		public bool? btbchaining { get; set; }  
+		public bool? clutch { get; set; }  
+		public PassthroughType? passthrough { get; set; }  
+		public bool? nolockout { get; set; }  
+		public GarbageBlockingType? garbageblocking { get; set; }  
+		public double? garbagemultiplier { get; set; }  
+		public ComboTableType? combotable { get;  set; }  
+		public GarbageTargetBonusType? garbagetargetbonus { get;  set; }  
+		public bool? garbageattackcap { get;  set; }  
+		public int? garbagephase { get;  set; }  
+		public bool? garbagequeue { get;  set; }  
+		public int? garbageholesize { get;  set; }  
+		public bool? allclears { get;  set; }  
+		public GarbageEntryType? garbageentry { get;  set; }
+		public int? garbageare { get;  set; }
+		public bool? shielded { get;  set; } 
 	}
 }

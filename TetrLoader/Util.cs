@@ -17,10 +17,19 @@ public class Util
 	public static string GetIgeDataType(ref string igeJsonString)
 	{
 		JsonDocument json = JsonDocument.Parse(igeJsonString);
-		Console.WriteLine(Marshal.SizeOf(json));
 		if (json.RootElement.TryGetProperty("data.type", out JsonElement typeString))
 			return typeString.GetString();
 		else
 			throw new Exception("unknown type");
+	}
+
+	public static string GetUsername(ref string fullDataString)
+	{
+		JsonDocument json = JsonDocument.Parse(fullDataString);
+		JsonElement usernameString;
+		if (!json.RootElement.GetProperty("options").TryGetProperty("username", out usernameString))
+			json.RootElement.GetProperty("options").GetProperty("user").TryGetProperty("username", out usernameString);
+
+		return usernameString.GetString();
 	}
 }

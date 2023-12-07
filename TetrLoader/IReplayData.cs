@@ -1,19 +1,22 @@
-﻿using TetrLoader.JsonClass.Event;
+﻿using TetrLoader.JsonClass;
+using TetrLoader.JsonClass.Event;
 using TetrLoader.Struct;
 
 namespace TetrLoader
 {
 	public interface IReplayData
 	{
-		 List<Event>? GetReplayEvents(int playerIndex, int gameIndex);
+		 List<Event>? GetReplayEvents(string username, int gameIndex);
 		 int GetPlayerCount();
-		 Stats GetReplayStats(int playerIndex, int replayIndex);
+		 Stats GetReplayStats(string username, int replayIndex);
 		  int GetGameTotalFrames(int replayIndex);
 		 string GetUsername(int playerIndex,int version);
 		 int GetGamesCount();
 
-		 int GetEndEventFrame(int playerIndex, int replayIndex);
+		 int GetEndEventFrame(string username, int replayIndex);
 
+		 EndContext GetEndContext(int playerIndex);
+		 string[] GetUsernames();
 
 
 

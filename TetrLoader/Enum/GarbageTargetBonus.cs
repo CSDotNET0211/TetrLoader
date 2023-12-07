@@ -7,6 +7,6 @@ namespace TetrLoader.Enum;
 public enum GarbageTargetBonusType
 {
 	None,
-	Normal,
-	Countering
+	Offensive,
+	Defensive
 }

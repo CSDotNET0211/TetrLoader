@@ -53,16 +53,32 @@ public class ReplayDataTTRM : IReplayData
 	public int GetGamesCount()
 		=> data.Count;
 
-	public int GetEndEventFrame(int playerIndex, int replayIndex)
+	public int GetEndEventFrame(string username, int replayIndex)
 	{
-		var last = data?[replayIndex].replays?[playerIndex].events.Last(x => x.type == EventType.End);
+		var last = GetRawEventByUsername(replayIndex, username).Last(x => x.type == EventType.End);
 		return (int)last.frame;
 	}
 
-
-	public List<TetrLoader.JsonClass.Event.Event>? GetReplayEvents(int playerIndex, int replayIndex)
+	public EndContext GetEndContext(int playerIndex)
 	{
-		var rawEvent = data?[replayIndex].replays?[playerIndex].events;
+		return endcontext[playerIndex];
+	}
+
+	public string[] GetUsernames()
+	{
+		string[] usernames;
+		if (endcontext[0].username == null)
+			usernames = endcontext.Select(x => x.user.username).ToArray();
+		else
+			usernames = endcontext.Select(x => x.username).ToArray();
+
+		return usernames;
+	}
+
+
+	public List<TetrLoader.JsonClass.Event.Event>? GetReplayEvents(string username, int replayIndex)
+	{
+		var rawEvent = GetRawEventByUsername(replayIndex, username);
 		List<TetrLoader.JsonClass.Event.Event> events = new List<TetrLoader.JsonClass.Event.Event>();
 
 
@@ -222,12 +238,11 @@ public class ReplayDataTTRM : IReplayData
 		}
 	}
 
-	public Stats GetReplayStats(int playerIndex, int replayIndex)
+	public Stats GetReplayStats(string username, int replayIndex)
 	{
 		var result = new Stats();
-		var events = GetReplayEvents(playerIndex, replayIndex);
+		var events = GetReplayEvents(username, replayIndex);
 		var eventEnd = events.Last(ev => ev.type == EventType.End) as EventEnd;
-		var eventFull = events.First(ev => ev.type == EventType.Full) as EventFull;
 		for (int i = events.Count - 1; i >= 0; i--)
 		{
 			if (events[i].type == EventType.End)
@@ -245,18 +260,12 @@ public class ReplayDataTTRM : IReplayData
 		int time = frames / 60;
 		result.Time = (time / 60).ToString() + ":" + (time % 60).ToString("00");
 
-		if (data[replayIndex].board[playerIndex].success == null)
-		{
+		var board = GetRawBoardByUsername(replayIndex, username);
+		if (board?.success == null)
 			result.Winner = false;
-		}
 		else
-		{
-			if (GetUsername(playerIndex, eventFull.data.options.version) ==
-			    GetUsernameAtBoard(playerIndex, eventFull.data.options.version))
-				result.Winner = (bool)data[replayIndex].board[playerIndex].success;
-			else
-				result.Winner = !(bool)data[replayIndex].board[playerIndex].success;
-		}
+			result.Winner = (bool)board.success;
+
 
 		return result;
 	}
@@ -275,12 +284,34 @@ public class ReplayDataTTRM : IReplayData
 		}
 	}
 
-	public string GetUsernameAtBoard(int playerIndex, int version)
+	//board and replay item is not synchronized index, needed to compare by username
+	public List<Event.Event>? GetRawEventByUsername(int replayIndex, string username)
 	{
-		if (version <= 15)
-			return data[0].board[playerIndex].user.username;
-		else
-			return data[0].board[playerIndex].username;
+		foreach (var rawEventbyPlayer in data?[replayIndex].replays)
+		{
+			var eventFull = rawEventbyPlayer.events?.First(ev => ev.type == EventType.Full) ;
+			string eventFullStr = eventFull.data.ToString();
+			var eventUserName = Util.GetUsername(ref eventFullStr);
+				if (eventUserName == username)
+				return rawEventbyPlayer.events;
+		}
+
+		return null;
+	}
+
+	public Board? GetRawBoardByUsername(int replayIndex, string username)
+	{
+		foreach (var boardbyPlayer in data?[replayIndex].board)
+		{
+			var boardUsername = boardbyPlayer.user?.username;
+			if (boardUsername == null)
+				boardUsername = boardbyPlayer.username;
+
+			if (boardUsername == username)
+				return boardbyPlayer;
+		}
+
+		return null;
 	}
 }
 

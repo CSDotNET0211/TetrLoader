@@ -13,12 +13,12 @@ public class GarbageTargetBonusTypeConverter : JsonConverter<GarbageTargetBonusT
 		{
 			case "none":
 				return GarbageTargetBonusType.None;
-			case "normal":
-				return GarbageTargetBonusType.Normal;
-			case "countering":
-				return GarbageTargetBonusType.Countering;
+			case "offensive":
+				return GarbageTargetBonusType.Offensive;
+			case "defensive":
+				return GarbageTargetBonusType.Defensive;
 			default:
-				throw new JsonException("Unknown GarbageTargetBonusType type.");
+				throw new JsonException("Unknown GarbageTargetBonusType type:"+reader.GetString());
 		}
 	}
 
@@ -29,11 +29,11 @@ public class GarbageTargetBonusTypeConverter : JsonConverter<GarbageTargetBonusT
 			case GarbageTargetBonusType.None:
 				writer.WriteStringValue("none");
 				break;
-			case GarbageTargetBonusType.Countering:
-				writer.WriteStringValue("countering");
+			case GarbageTargetBonusType.Defensive:
+				writer.WriteStringValue("defensive");
 				break;
-			case GarbageTargetBonusType.Normal:
-				writer.WriteStringValue("normal");
+			case GarbageTargetBonusType.Offensive:
+				writer.WriteStringValue("offensive");
 				break;
 			default:
 				throw new JsonException("Unknown GarbageTargetBonusType type.");
