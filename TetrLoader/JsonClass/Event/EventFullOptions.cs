@@ -62,7 +62,7 @@ namespace TetrLoader.JsonClass.Event
 		public ComboTableType? combotable { get;  set; }  
 		public GarbageTargetBonusType? garbagetargetbonus { get;  set; }  
 		public bool? garbageattackcap { get;  set; }  
-		public int? garbagephase { get;  set; }  
+		public object garbagephase { get;  set; }  
 		public bool? garbagequeue { get;  set; }  
 		public int? garbageholesize { get;  set; }  
 		public bool? allclears { get;  set; }  
