@@ -17,7 +17,7 @@ namespace TetrLoader
 		/// <param name="replayKind"></param>
 		/// <returns>Parsed replay object. ReplayDataTTR or ReplayDataTTRM</returns>
 		/// <exception cref="Exception"></exception>
-		public static IReplayData? ParseReplay(string jsonString, ReplayKind replayKind)
+		public static IReplayData ParseReplay(string jsonString, ReplayKind replayKind)
 		{
 			IReplayData? replay;
 			if (replayKind == ReplayKind.TTR)
@@ -26,8 +26,8 @@ namespace TetrLoader
 				replay = JsonSerializer.Deserialize<ReplayDataTTRM>(jsonString);
 
 			if (replay == null)
-				throw new Exception("Failed to Convert Json File.\r\n" +
-				                    "Supported Json File is TETR.IO Replay(.ttr | .ttrm) Only.");
+				throw new Exception("Failed to convert json file.\r\n" +
+				                    "Supported json file is TETR.IO replay(.ttr | .ttrm) only.");
 
 			return replay;
 		}

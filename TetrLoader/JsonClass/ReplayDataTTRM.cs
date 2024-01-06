@@ -76,17 +76,16 @@ public class ReplayDataTTRM : IReplayData
 	}
 
 
-	public List<TetrLoader.JsonClass.Event.Event>? GetReplayEvents(string username, int replayIndex)
+	public List<TetrLoader.JsonClass.Event.Event> GetReplayEvents(string username, int replayIndex)
 	{
 		var rawEvent = GetRawEventByUsername(replayIndex, username);
 		List<TetrLoader.JsonClass.Event.Event> events = new List<TetrLoader.JsonClass.Event.Event>();
 
+		if (@rawEvent == null)
+			throw new Exception();
 
 		foreach (var @event in rawEvent)
 		{
-			if (@event == null)
-				throw new Exception();
-
 			switch (@event.type)
 			{
 				case EventType.Start:
@@ -134,10 +133,6 @@ public class ReplayDataTTRM : IReplayData
 					break;
 
 				case EventType.Ige:
-					//		JsonDocument igeJson = JsonDocument.Parse(@event.data.ToString());
-					//		JsonElement igeDataElement;
-					//		igeJson.RootElement.TryGetProperty("data", out igeDataElement);
-
 					EventIge eventIge = new EventIge(@event.id,
 						(int)@event.frame,
 						@event.type,
@@ -157,11 +152,13 @@ public class ReplayDataTTRM : IReplayData
 		return events;
 	}
 
+	/// <summary>
+	/// this is for ensuring the compatibility with before version
+	/// </summary>
+	/// <param name="data"></param>
+	/// <param name="events"></param>
 	public void ProcessReplayData(ReplayDataTTRM data, List<TetrLoader.JsonClass.Event.Event>? events)
 	{
-		//	var endContext0 = data.endcontext[0];
-		//	var endContext1 = data.endcontext[1];
-
 		foreach (var endContext in data.endcontext)
 		{
 			if (endContext.username == null)
@@ -183,8 +180,6 @@ public class ReplayDataTTRM : IReplayData
 				}
 			}
 
-			//foreach (var player in events)
-			//	{
 			if (events != null)
 			{
 				for (var index = 0; index < events.Count; index++)
@@ -289,10 +284,10 @@ public class ReplayDataTTRM : IReplayData
 	{
 		foreach (var rawEventbyPlayer in data?[replayIndex].replays)
 		{
-			var eventFull = rawEventbyPlayer.events?.First(ev => ev.type == EventType.Full) ;
+			var eventFull = rawEventbyPlayer.events?.First(ev => ev.type == EventType.Full);
 			string eventFullStr = eventFull.data.ToString();
 			var eventUserName = Util.GetUsername(ref eventFullStr);
-				if (eventUserName == username)
+			if (eventUserName == username)
 				return rawEventbyPlayer.events;
 		}
 

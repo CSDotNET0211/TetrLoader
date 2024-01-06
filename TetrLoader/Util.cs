@@ -5,11 +5,16 @@ namespace TetrLoader;
 
 public class Util
 {
+	class ForMulti
+	{
+		public bool? ismulti { get; set; }
+	}
+
 	public static bool IsMulti(ref string jsonString)
 	{
-		JsonDocument json = JsonDocument.Parse(jsonString);
-		if (json.RootElement.TryGetProperty("ismulti", out JsonElement ismulti))
-			return ismulti.GetBoolean();
+		var instance = JsonSerializer.Deserialize<ForMulti>(jsonString);
+		if (instance.ismulti != null)
+			return (bool)instance.ismulti;
 		else
 			return false;
 	}

@@ -12,7 +12,15 @@ namespace TetrLoader.JsonClass
 		public bool? supporter { get; set; }
 		public bool? verified { get; set; }
 		public string? country { get; set; }
+
+		public override bool Equals(object? obj)
+		{
+			return ((User)obj)._id == _id;
+		}
+
+		public override int GetHashCode()
+		{
+			return _id.GetHashCode();
+		}
 	}
-	
-	
 }
