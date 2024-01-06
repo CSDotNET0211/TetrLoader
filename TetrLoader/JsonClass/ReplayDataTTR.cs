@@ -8,10 +8,10 @@ namespace TetrLoader.JsonClass;
 /// <summary>
 /// リプレイファイルのデータ
 /// </summary>
- 
 public class ReplayDataTTR : IReplayData
 {
 	public User? user { get; set; } = null;
+
 	//TTR
 	public string? _id { get; set; } = null;
 	public string? shortid { get; set; } = null;
@@ -21,14 +21,19 @@ public class ReplayDataTTR : IReplayData
 	public string? ts { get; set; } = null;
 	public string? gametype { get; set; } = null;
 	public bool? verified { get; set; } = null;
+
 	/// <summary>
 	/// 試合ごとのデータ群
 	/// </summary>
-	public  ReplayEvent? data { get; set; } = null;
+	public ReplayEvent? data { get; set; } = null;
+
 	public string? back { get; set; } = null;
 
+	//TODO: fix this
 	public int GetGameTotalFrames(int replayIndex)
-		=> -1;
+	{
+		return data.frames ?? -1;
+	}
 
 	public int GetPlayerCount()
 		=> 1;
@@ -36,24 +41,25 @@ public class ReplayDataTTR : IReplayData
 	public int GetGamesCount()
 		=> 1;
 
+//TODO: argumants will be ignored. fix this
 	public int GetEndEventFrame(string username, int replayIndex)
 	{
-		return 0;
+		return data.events.Last(x => x.type == EventType.End).frame ?? -1;
 	}
 
 	public EndContext GetEndContext(int playerIndex)
 	{
-		throw new NotImplementedException();
+		return endcontext;
 	}
 
 	public string[] GetUsernames()
 	{
-		throw new NotImplementedException();
+			return new[] { user.username };
+	 
 	}
 
 	public List<Event.Event>? GetReplayEvents(string username, int replayIndex)
 	{
-
 		var rawEvent = data.events;
 		List<Event.Event> events = new List<Event.Event>();
 
@@ -120,24 +126,39 @@ public class ReplayDataTTR : IReplayData
 				default:
 					events.Add(@event);
 					break;
-
 			}
 		}
 
 		return events;
-
 	}
 
+	//TODO: not checked the code
 	public Stats GetReplayStats(string username, int replayIndex)
-		=> new Stats()
+	{
+		var result = new Stats();
+		var events = GetReplayEvents(username, replayIndex);
+		var eventEnd = events.Last(ev => ev.type == EventType.End) as EventEnd;
+		for (int i = events.Count - 1; i >= 0; i--)
 		{
-			PPS = -1,
-			APM = -1,
-			VS = -1,
-			Winner = false
-		};
+			if (events[i].type == EventType.End)
+			{
+				eventEnd = events[i] as EventEnd;
+				break;
+			}
+		}
 
-	public string GetUsername(int playerIndex,int version)
+		result.VS = eventEnd.data.export.aggregatestats.vsscore ?? -1;
+		result.APM = eventEnd.data.export.aggregatestats.apm ?? -1;
+		result.PPS = eventEnd.data.export.aggregatestats.pps ?? -1;
+
+		var frames = GetGameTotalFrames(replayIndex);
+		int time = frames / 60;
+		result.Time = (time / 60).ToString() + ":" + (time % 60).ToString("00");
+
+		result.Winner = false;
+		return result;
+	}
+
+	public string GetUsername(int playerIndex, int version)
 		=> user.username;
-
 }
