@@ -1,4 +1,5 @@
-﻿using TetrLoader.JsonClass;
+﻿using TetrLoader.Enum;
+using TetrLoader.JsonClass;
 using TetrLoader.JsonClass.Event;
 using TetrLoader.Struct;
 
@@ -18,7 +19,7 @@ namespace TetrLoader
 		 EndContext GetEndContext(int playerIndex);
 		 string[] GetUsernames();
 
-
+		 GameType? GetGameType();
 
 
 

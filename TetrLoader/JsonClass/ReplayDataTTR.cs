@@ -19,7 +19,7 @@ public class ReplayDataTTR : IReplayData
 	public EndContext? endcontext { get; set; } = null;
 
 	public string? ts { get; set; } = null;
-	public string? gametype { get; set; } = null;
+	public GameType? gametype { get; set; } = null;
 	public bool? verified { get; set; } = null;
 
 	/// <summary>
@@ -56,6 +56,11 @@ public class ReplayDataTTR : IReplayData
 	{
 			return new[] { user.username };
 	 
+	}
+
+	public GameType? GetGameType()
+	{
+		return gametype;
 	}
 
 	public List<Event.Event>? GetReplayEvents(string username, int replayIndex)

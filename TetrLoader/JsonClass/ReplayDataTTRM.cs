@@ -18,7 +18,7 @@ public class ReplayDataTTRM : IReplayData
 	public List<EndContext>? endcontext { get; set; } = null;
 
 	public string? ts { get; set; } = null;
-	public string? gametype { get; set; } = null;
+	public GameType? gametype { get; set; } = null;
 	public bool? verified { get; set; } = null;
 
 	public string replayid { get; set; }
@@ -73,6 +73,11 @@ public class ReplayDataTTRM : IReplayData
 			usernames = endcontext.Select(x => x.username).ToArray();
 
 		return usernames;
+	}
+
+	public GameType? GetGameType()
+	{
+		return gametype;
 	}
 
 
