@@ -36,10 +36,10 @@ public class ReplayDataTTRM : IReplayData
 	{
 		int maxFrame = -1;
 
-		foreach (var game in data[replayIndex].replays)
+		foreach (var replay in data[replayIndex].replays)
 		{
-			if (maxFrame < game.frames)
-				maxFrame = (int)game.frames;
+			if (maxFrame < replay.frames)
+				maxFrame = (int)replay.frames;
 		}
 
 		return maxFrame;
