@@ -29,7 +29,7 @@ public class ReplayDataTTR : IReplayData
 
 	public string? back { get; set; } = null;
 
-	//TODO: fix this
+	//TODO: implement this
 	public int GetGameTotalFrames(int replayIndex)
 	{
 		return data.frames ?? -1;
@@ -54,8 +54,7 @@ public class ReplayDataTTR : IReplayData
 
 	public string[] GetUsernames()
 	{
-			return new[] { user.username };
-	 
+		return new[] { user.username };
 	}
 
 	public GameType? GetGameType()

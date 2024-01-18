@@ -86,7 +86,6 @@ namespace TetrLoader.JsonClass.Event
 					data.data = igeBase;
 					break;
 
-				//TODO: とりあえず例外で情報集め、基本はそのまま収納
 				default: throw new Exception("igeType:" + igeType);
 			}
 
