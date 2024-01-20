@@ -29,13 +29,15 @@ public class KeyTypeConverter : JsonConverter<KeyType>
 				return KeyType.Rotate180;
 			case "chat":
 				return KeyType.Chat;
+			case "retry":
+				return KeyType.Retry;
 			case "exit":
 				return KeyType.Exit;
 			default:
 				if (reader.GetString().StartsWith("target"))
 					return KeyType.Null;
-				
-				throw new JsonException("Unknown key type:"+reader.GetString());
+
+				throw new JsonException("Unknown key type:" + reader.GetString());
 		}
 	}
 
@@ -46,6 +48,5 @@ public class KeyTypeConverter : JsonConverter<KeyType>
 		string restOfString = keystr.Substring(1);
 		string result = char.ToLower(firstChar) + restOfString;
 		writer.WriteStringValue(result);
-		
 	}
 }

@@ -16,5 +16,6 @@ public enum KeyType
 	Hold,
 	Chat,
 	Exit,
+	Retry,
 	Null
 }
