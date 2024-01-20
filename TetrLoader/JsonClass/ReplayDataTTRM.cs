@@ -53,10 +53,10 @@ public class ReplayDataTTRM : IReplayData
 	public int GetGamesCount()
 		=> data.Count;
 
-	public int GetEndEventFrame(string username, int replayIndex)
+	public int? GetEndEventFrame(string username, int replayIndex)
 	{
-		var last = GetRawEventByUsername(replayIndex, username).Last(x => x.type == EventType.End);
-		return (int)last.frame;
+		var last = GetRawEventByUsername(replayIndex, username)?.Last(x => x.type == EventType.End);
+		return last?.frame;
 	}
 
 	public EndContext GetEndContext(int playerIndex)
@@ -81,13 +81,13 @@ public class ReplayDataTTRM : IReplayData
 	}
 
 
-	public List<TetrLoader.JsonClass.Event.Event> GetReplayEvents(string username, int replayIndex)
+	public List<TetrLoader.JsonClass.Event.Event>? GetReplayEvents(string username, int replayIndex)
 	{
 		var rawEvent = GetRawEventByUsername(replayIndex, username);
 		List<TetrLoader.JsonClass.Event.Event> events = new List<TetrLoader.JsonClass.Event.Event>();
 
 		if (@rawEvent == null)
-			throw new Exception();
+			return null;
 
 		foreach (var @event in rawEvent)
 		{
@@ -228,10 +228,7 @@ public class ReplayDataTTRM : IReplayData
 					else if (@event.type == EventType.Full)
 					{
 						var eventFull = @event as EventFull;
-						if (eventFull.data.options.handling == null)
-						{
-							eventFull.data.options.handling = eventFull.data.game.handling;
-						}
+						eventFull.data.options.handling ??= eventFull.data.game.handling;
 					}
 				}
 			}
@@ -289,7 +286,9 @@ public class ReplayDataTTRM : IReplayData
 	{
 		foreach (var rawEventbyPlayer in data?[replayIndex].replays)
 		{
-			var eventFull = rawEventbyPlayer.events?.First(ev => ev.type == EventType.Full);
+			var eventFull = rawEventbyPlayer.events?.FirstOrDefault(ev => ev.type == EventType.Full);
+			if (eventFull == null)
+				return null;
 			string eventFullStr = eventFull.data.ToString();
 			var eventUserName = Util.GetUsername(ref eventFullStr);
 			if (eventUserName == username)

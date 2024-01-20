@@ -42,9 +42,9 @@ public class ReplayDataTTR : IReplayData
 		=> 1;
 
 //TODO: argumants will be ignored. fix this
-	public int GetEndEventFrame(string username, int replayIndex)
+	public int? GetEndEventFrame(string username, int replayIndex)
 	{
-		return data.events.Last(x => x.type == EventType.End).frame ?? -1;
+		return data?.events?.Last(x => x.type == EventType.End).frame ?? null;
 	}
 
 	public EndContext GetEndContext(int playerIndex)

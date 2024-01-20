@@ -14,7 +14,7 @@ namespace TetrLoader
 		 string GetUsername(int playerIndex,int version);
 		 int GetGamesCount();
 
-		 int GetEndEventFrame(string username, int replayIndex);
+		 int? GetEndEventFrame(string username, int replayIndex);
 
 		 EndContext GetEndContext(int playerIndex);
 		 string[] GetUsernames();
