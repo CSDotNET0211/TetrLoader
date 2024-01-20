@@ -89,70 +89,9 @@ public class ReplayDataTTRM : IReplayData
 		if (@rawEvent == null)
 			return null;
 
+
 		foreach (var @event in rawEvent)
-		{
-			switch (@event.type)
-			{
-				case EventType.Start:
-					events.Add(@event);
-					break;
-
-				case EventType.End:
-					events.Add(new EventEnd
-					(
-						@event.id,
-						(int)@event.frame,
-						@event.type,
-						JsonSerializer.Deserialize<EventEndData>(@event.data.ToString())
-					));
-					break;
-
-				case EventType.Full:
-					events.Add(new EventFull
-					(
-						@event.id,
-						(int)@event.frame,
-						@event.type,
-						JsonSerializer.Deserialize<EventFullData>(@event.data.ToString())
-					));
-					break;
-
-				case EventType.Keydown:
-				case EventType.Keyup:
-					events.Add(new EventKeyInput
-					(
-						@event.id,
-						(int)@event.frame,
-						@event.type,
-						JsonSerializer.Deserialize<EventKeyInputData>(@event.data.ToString())
-					));
-					break;
-
-				case EventType.Targets:
-					events.Add(new EventTargets(
-						@event.id,
-						(int)@event.frame,
-						@event.type,
-						JsonSerializer.Deserialize<EventTargetsData>(@event.data.ToString())
-					));
-					break;
-
-				case EventType.Ige:
-					EventIge eventIge = new EventIge(@event.id,
-						(int)@event.frame,
-						@event.type,
-						@event.data.ToString()
-					);
-
-					events.Add(eventIge);
-					break;
-
-				default:
-					var igetype = @event.type;
-					events.Add(@event);
-					break;
-			}
-		}
+			events.Add(Util.ProcessEvent(@event));
 
 		return events;
 	}

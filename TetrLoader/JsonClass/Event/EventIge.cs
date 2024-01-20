@@ -79,6 +79,7 @@ namespace TetrLoader.JsonClass.Event
 					{
 						Debug.WriteLine("probably not working correctly");
 					}
+
 					break;
 
 				case "attack":

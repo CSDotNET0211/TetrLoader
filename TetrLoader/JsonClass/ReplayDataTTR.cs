@@ -72,65 +72,7 @@ public class ReplayDataTTR : IReplayData
 			if (@event == null)
 				throw new Exception();
 
-			switch (@event.type)
-			{
-				case EventType.Start:
-					events.Add(@event);
-					break;
-
-				case EventType.End:
-					events.Add(new EventEnd
-					(
-						@event.id,
-						(int)@event.frame,
-						@event.type,
-						JsonSerializer.Deserialize<EventEndData>(@event.data.ToString())
-					));
-					break;
-
-				case EventType.Full:
-					events.Add(new EventFull
-					(
-						@event.id,
-						(int)@event.frame,
-						@event.type,
-						JsonSerializer.Deserialize<EventFullData>(@event.data.ToString())
-					));
-					break;
-
-				case EventType.Keyup:
-				case EventType.Keydown:
-					events.Add(new EventKeyInput
-					(
-						@event.id,
-						(int)@event.frame,
-						@event.type,
-						JsonSerializer.Deserialize<EventKeyInputData>(@event.data.ToString())
-					));
-					break;
-
-				case EventType.Targets:
-					events.Add(new EventTargets(
-						@event.id,
-						(int)@event.frame,
-						@event.type,
-						JsonSerializer.Deserialize<EventTargetsData>(@event.data.ToString())
-					));
-					break;
-
-				case EventType.Ige:
-					events.Add(new EventIge(
-						@event.id,
-						(int)@event.frame,
-						@event.type,
-						JsonSerializer.Deserialize<EventIgeData?>(@event.data.ToString())
-					));
-					break;
-
-				default:
-					events.Add(@event);
-					break;
-			}
+			events.Add(Util.ProcessEvent(@event));
 		}
 
 		return events;
