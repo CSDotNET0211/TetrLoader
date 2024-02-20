@@ -17,7 +17,7 @@ namespace TetrLoader
 		/// <param name="replayKind"></param>
 		/// <returns>Parsed replay object. ReplayDataTTR or ReplayDataTTRM</returns>
 		/// <exception cref="Exception"></exception>
-		public static IReplayData ParseReplay(string jsonString, ReplayKind replayKind)
+		public static IReplayData ParseReplay(ref string jsonString, ReplayKind replayKind)
 		{
 			IReplayData? replay;
 			if (replayKind == ReplayKind.TTR)
