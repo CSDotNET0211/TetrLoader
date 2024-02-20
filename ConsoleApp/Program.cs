@@ -1,7 +1,9 @@
 ﻿using System.Text;
+using System.Text.Json;
 using TetrLoader;
 using TetrLoader.Enum;
 using TetrLoader.JsonClass;
+using TetrLoader.JsonClass.Event;
 
 START: ;
 string jsonString = string.Empty;
@@ -15,7 +17,7 @@ using (StreamReader reader = new StreamReader(fileName, Encoding.UTF8))
 
 Console.WriteLine(Util.IsMulti(ref jsonString));
 
-var IReplayData = ReplayLoader.ParseReplay(jsonString, ReplayKind.TTRM);
+var IReplayData = ReplayLoader.ParseReplay(ref jsonString, ReplayKind.TTRM);
 //保存先のファイル名
 var usernames = IReplayData.GetUsernames();
 
