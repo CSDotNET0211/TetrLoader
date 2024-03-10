@@ -76,5 +76,9 @@ namespace TetrLoader.JsonClass.Event
 		public bool? masterlevels { get; set; }
 		public string? gameid { get; set; }
 		public bool? gravitymay20g { get; set; }
+		public double? messiness_change { get; set; }
+		public double? messiness_inner { get; set; }
+		public bool? messiness_nosame { get; set; }
+		public int? messiness_timeout { get; set; }
 	}
 }

@@ -1,9 +1,15 @@
 ﻿namespace TetrLoader.JsonClass
 {
 	 
-	public class ConfigData
+	public class ConfigDataTTC
 	{
-
+		public Controls? controls { get; set; }
+		public Handling? handling { get; set; }
+		public Volume? volume { get; set; }
+		public Video? video { get; set; }
+		public Gameoptions? gameoptions { get; set; }
+		public Electron? electron { get; set; }
+		public Notifications? notifications { get; set; }
 	}
 	 
 	// Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
@@ -81,16 +87,6 @@
 		public string? other { get; set; }
 	}
 	 
-	public class Root
-	{
-		public Controls? controls { get; set; }
-		public Handling? handling { get; set; }
-		public Volume? volume { get; set; }
-		public Video? video { get; set; }
-		public Gameoptions? gameoptions { get; set; }
-		public Electron? electron { get; set; }
-		public Notifications? notifications { get; set; }
-	}
 	 
 	public class Video
 	{
