@@ -30,14 +30,11 @@ public class Util
 			throw new Exception("unknown type");
 	}
 
-	public static string GetUsername(ref string fullDataString)
+	public static string GetUsernameFromFullData(EventFullOptionsData fullDataOptionsData)
 	{
-		JsonDocument json = JsonDocument.Parse(fullDataString);
-		JsonElement usernameString;
-		if (!json.RootElement.GetProperty("options").TryGetProperty("username", out usernameString))
-			json.RootElement.GetProperty("options").GetProperty("user").TryGetProperty("username", out usernameString);
-
-		return usernameString.GetString();
+		string? username = fullDataOptionsData.username;
+		username ??= fullDataOptionsData.user.username;
+		return username;
 	}
 
 	/// <summary>

@@ -126,9 +126,34 @@ public class ReplayDataTTRM : IReplayData
 
 			if (events != null)
 			{
-				for (var index = 0; index < events.Count; index++)
+				/*bool fullFlag = false;
+				bool startFlag = false;
+				foreach (var ev in events)
 				{
-					var @event = events[index];
+					if (ev.type == EventType.Start)
+					{
+						startFlag = true;
+					}
+
+					//TODO:fullを追加してfullとendの強制対応を消す	
+					if (ev.type == EventType.Full)
+					{
+						fullFlag = true;
+					}
+				}
+
+				if (!fullFlag)
+				{
+					var eventEnd = (events.LastOrDefault(ev => ev.type == EventType.End) as EventEnd).data;
+					events.Insert(0, new Event.EventFull(0, 0, EventType.Full, eventEnd.export));
+				}
+
+				if (!startFlag)
+					events.Insert(0, new Event.Event(0, 0, EventType.Start));
+*/
+				for (var eventIndex = 0; eventIndex < events.Count; eventIndex++)
+				{
+					var @event = events[eventIndex];
 					if (@event.type == EventType.Ige)
 					{
 						dynamic eventDynamic = @event;
@@ -162,7 +187,7 @@ public class ReplayDataTTRM : IReplayData
 						var newEvent = new EventIge(null, eventDynamic.frame, EventType.Ige, igeData);
 
 
-						events[index] = newEvent;
+						events[eventIndex] = newEvent;
 					}
 					else if (@event.type == EventType.Full)
 					{
@@ -225,11 +250,17 @@ public class ReplayDataTTRM : IReplayData
 	{
 		foreach (var rawEventbyPlayer in data?[replayIndex].replays)
 		{
-			var eventFull = rawEventbyPlayer.events?.FirstOrDefault(ev => ev.type == EventType.Full);
-			if (eventFull == null)
-				return null;
-			string eventFullStr = eventFull.data.ToString();
-			var eventUserName = Util.GetUsername(ref eventFullStr);
+			var options = (rawEventbyPlayer.events?.FirstOrDefault(ev => ev.type == EventType.Full) as EventFull)?.data
+				.options;
+
+			options ??= JsonSerializer
+				.Deserialize<EventEndData>(rawEventbyPlayer.events?.LastOrDefault(ev => ev.type == EventType.End).data
+					.ToString()).export.options;
+
+			if (options == null)
+				throw new Exception("not full or end event detected");
+
+			var eventUserName = Util.GetUsernameFromFullData(options);
 			if (eventUserName == username)
 				return rawEventbyPlayer.events;
 		}

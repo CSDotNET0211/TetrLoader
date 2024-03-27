@@ -7,25 +7,19 @@ namespace TetrLoader
 {
 	public interface IReplayData
 	{
-		 List<Event>? GetReplayEvents(string username, int gameIndex);
-		 int GetPlayerCount();
-		 Stats GetReplayStats(string username, int replayIndex);
-		  int GetGameTotalFrames(int replayIndex);
-		 string GetUsername(int playerIndex,int version);
-		 int GetGamesCount();
+		List<Event>? GetReplayEvents(string username, int gameIndex);
+		int GetPlayerCount();
+		Stats GetReplayStats(string username, int replayIndex);
+		int GetGameTotalFrames(int replayIndex);
+		string GetUsername(int playerIndex, int version);
 
-		 int? GetEndEventFrame(string username, int replayIndex);
+		int GetGamesCount();
 
-		 EndContext GetEndContext(int playerIndex);
-		 string[] GetUsernames();
+		//EventFullData GetEventFullData(string rawEvents);
+		int? GetEndEventFrame(string username, int replayIndex);
+		EndContext GetEndContext(int playerIndex);
+		string[] GetUsernames();
 
-		 GameType? GetGameType();
-
-
-
-
-
+		GameType? GetGameType();
 	}
-
-
 }

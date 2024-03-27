@@ -15,6 +15,6 @@ namespace TetrLoader.JsonClass.Event
 	public class EventEndData
 	{
 		public string? reason { get; set; } = null;
-		public Export? export { get; set; } = null;
+		public EventFullData? export { get; set; } = null;
 	}
 }

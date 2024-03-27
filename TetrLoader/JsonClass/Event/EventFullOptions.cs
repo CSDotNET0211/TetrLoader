@@ -32,6 +32,7 @@ namespace TetrLoader.JsonClass.Event
 		public bool? physical { get; set; }
 		public bool? display_username { get; set; }
 		public string? username { get; set; }
+		public User? user { get; set; }
 		public int? nextcount { get; set; }
 		public int? stock { get; set; }
 		public bool? hasgarbage { get; set; }

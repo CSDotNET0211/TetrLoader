@@ -8,7 +8,6 @@ namespace TetrLoader.JsonClass.Event
 		{
 			this.data = data;
 		}
-
 		public new EventFullData data { get; set; }
 	}
 	 
@@ -24,5 +23,7 @@ namespace TetrLoader.JsonClass.Event
 		public EventFullOptionsData? options { get; set; } = null;
 		public EventFullStatsData? stats { get; set; } = null;
 		public EventFullGameData? game { get; set; } = null;
+		
+		public AggregateStats? aggregatestats { get; set; } = null;
 	}
 }
