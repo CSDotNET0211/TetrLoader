@@ -22,6 +22,12 @@ public class BagTypeConverter : JsonConverter<BagType>
 				return BagType.Pairs;
 			case "total mayhem":
 				return BagType.TotalMayhem;
+			case "7+1-bag":
+				return BagType.Bag7Plus1;
+			case "7+2-bag":
+				return BagType.Bag7Plus2;
+			case "7+x-bag":
+				return BagType.Bag7PlusX;
 			default:
 				throw new JsonException("Unknown bag type:" + reader.GetString());
 		}
@@ -45,6 +51,15 @@ public class BagTypeConverter : JsonConverter<BagType>
 				return;
 			case BagType.TotalMayhem:
 				writer.WriteStringValue("total mayhem");
+				return;
+			case BagType.Bag7Plus1:
+				writer.WriteStringValue("7+1-bag");
+				return;
+			case BagType.Bag7Plus2:
+				writer.WriteStringValue("7+2-bag");
+				return;
+			case BagType.Bag7PlusX:
+				writer.WriteStringValue("7+x-bag");
 				return;
 			default:
 				throw new JsonException("Unknown bag type.");

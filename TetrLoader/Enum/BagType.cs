@@ -11,5 +11,8 @@ public enum BagType
 	Pairs,
 	Classic,
 	TotalMayhem,
-	Bag7_oo
+	Bag7OO,
+	Bag7Plus1,
+	Bag7Plus2,
+	Bag7PlusX,
 }
