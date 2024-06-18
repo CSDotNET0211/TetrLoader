@@ -14,7 +14,7 @@
 
 	public class EventFullGameData
 	{
-		public List<List<string?>>? board { get; set; }
+		public object? board { get; set; }
 		public List<string>? bag { get; set; }
 		public double? g { get; set; }
 		public bool? playing { get; set; }
