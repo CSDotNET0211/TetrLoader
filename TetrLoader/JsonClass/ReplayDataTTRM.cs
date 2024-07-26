@@ -175,7 +175,7 @@ public class ReplayDataTTRM : IReplayData
 						{
 							try
 							{
-								targets[i] = targets[i].Substring(0, 24);
+									targets[i] = targets[i].Substring(0, 24);
 							}
 							catch
 							{
